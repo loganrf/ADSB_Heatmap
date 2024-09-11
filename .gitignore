@@ -130,6 +130,10 @@ ENV/
 env.bak/
 venv.bak/
 .github/
+.idea/
+
+*.html
+
 # Spyder project settings
 .spyderproject
 .spyproject
