@@ -12,12 +12,16 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
-    - name: Set DigitalOcean Spaces credentials
-      run: |
-        echo "AWS_ACCESS_KEY_ID=${{ secrets.S3_KEY }}" >> $GITHUB_ENV
-        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.S3_SECRET }}" >> $GITHUB_ENV
-
-    - name: Upload HTML file to DigitalOcean Space
-      run: |
-        aws s3 cp ./SEA_Paths.html s3://iron/public/SEA_Paths.html --endpoint-url https://sfo3.digitaloceanspaces.com
+    - name: Upload Content to Digitalocean Spaces
+      # You may pin to the exact commit or the version.
+      # uses: kodertroop/do-space-sync-action@4dd3c681a654f55679ee68f23e536d66914a1b43
+      uses: kodertroop/do-space-sync-action@v1.0.1
+      with:
+          # Source Dir form where files have to be uploaded
+          SOURCE_DIR: ./public # default is ./public
+          # Region of DO spaces
+          SPACE_REGION: SFO3 # default is blr1
+          # DO spaces SPACE_ACCESS_KEY_ID
+          SPACE_ACCESS_KEY_ID: ${{ secrets.S3_KEY }} # default is 
+          # DO spaces SPACE_SECRET_ACCESS_KEY
+          SPACE_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET }} # default is 
