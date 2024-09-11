@@ -22,4 +22,4 @@ jobs:
 
     - name: Upload HTML file to DigitalOcean Space
       run: |
-        aws s3 cp ./SEA_Paths.html s3://iron/public/SEA_Paths.html --endpoint-url https://sfo3.digitaloceanspaces.com
+        aws s3 cp ./SEA_Paths.html s3://iron/public/SEA_Paths.html --endpoint https://sfo3.digitaloceanspaces.com
