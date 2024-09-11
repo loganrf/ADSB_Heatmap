@@ -13,13 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.S3_KEY }}
-        aws-secret-access-key: ${{ secrets.S3_SECRET }}
-        aws-region: sfo3  # Update this to your region (e.g., sfo3, sgp1)
+    - name: Set DigitalOcean Spaces credentials
+      run: |
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.S3_KEY }}" >> $GITHUB_ENV
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.S3_SECRET }}" >> $GITHUB_ENV
 
     - name: Upload HTML file to DigitalOcean Space
       run: |
-        aws s3 cp ./SEA_Paths.html s3://iron/public/SEA_Paths.html --endpoint https://sfo3.digitaloceanspaces.com
+        aws s3 cp ./SEA_Paths.html s3://iron/public/SEA_Paths.html --endpoint-url https://sfo3.digitaloceanspaces.com
