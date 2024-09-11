@@ -51,7 +51,7 @@ def load_coordinates_from_csv(file_path, lat_column, lon_column):
 # Example usage:
 if __name__ == "__main__":
     # Path to your CSV file
-    csv_file_path = "adsb_gt10k.csv"
+    csv_file_path = "adsb_precise.csv"
 
     # Column names in the CSV file for latitude and longitude
     latitude_column = "latitude"
@@ -61,4 +61,4 @@ if __name__ == "__main__":
     coordinates = load_coordinates_from_csv(csv_file_path, latitude_column, longitude_column)
 
     # Generate the heatmap
-    generate_heatmap(coordinates, "SEA_Paths_V2.html")
+    generate_heatmap(coordinates, "SEA_Paths.html")
